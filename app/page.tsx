@@ -1,84 +1,47 @@
-
 "use client";
 import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
+import PixelRain from "../components/PixelRain";
 
 const t = {
   fr: {
-    title: "Transformez votre Hub en un vivier de talents exclusif",
-    sub: "Réduisez le time-to-hire de 75% et économisez 5 000 € par recrutement — déjà adopté par Sciences Po et Wacano.",
+    heroTitle: "Transformez votre Hub en un vivier de talents exclusif",
+    heroSub: "Réduisez le time-to-hire de 75% et économisez 5 000 € par recrutement — déjà adopté par Sciences Po et Wacano.",
     cta: "Réserver un appel de 15 min",
     trusted: "Ils nous font confiance",
+    probTitle: "Votre hub capture-t-il réellement toute la valeur de sa communauté ?",
+    probText: "Quand chaque startup recrute seule, des profils qualifiés se perdent et la valeur de l’écosystème diminue. Résultat : 45h gaspillées par recrutement et des opportunités manquées.",
+    pillarsTitle: "Une infrastructure de talents partagée qui transforme votre hub",
+    pillar1Title: "Activer l’écosystème",
+    pillar1Text: "Un réseau de talents qui circule entre vos startups. Adoption à 100% en 3 mois.",
+    pillar2Title: "Accélérer la croissance",
+    pillar2Text: "Réduction du time-to-hire de 75%.",
+    pillar3Title: "Créer un actif défensif",
+    pillar3Text: "Un vivier exclusif où chaque “médaillé d’argent” est conservé (10–100 € de valeur par profil).",
+    howTitle: "Comment ça marche",
+    how1: "Connexion gratuite de toutes vos startups à la plateforme.",
+    how2: "Les candidats non retenus rejoignent automatiquement le vivier commun.",
+    how3: "Chaque startup accède à des talents pré-qualifiés par leurs pairs.",
+    strip: "Chaque “non” à un bon candidat est un actif qui disparaît.",
+    offerTitle: "Gratuit jusqu’en janvier 2026 — réservé aux 5 prochains hubs partenaires",
+    offerSub: "Ensuite : 10 €/mois par startup (payé par le hub ou par les startups).",
     usecases: "Use cases clients",
-    wacanoSub: "des startups qui collaborent",
+    scpoTitle: "Sciences Po — Communauté alumni & startups",
+    scpoText: "Sciences Po permet à ses startups et à sa communauté alumni de créer un réseau de candidats partageant leurs valeurs et leurs besoins — un vivier préqualifié, exclusif à leur écosystème.",
+    wacanoTitle: "Wacano — des startups qui collaborent",
+    wacanoText: "Wacano met en commun les “médaillés d’argent” de ses 56 startups pour réduire le time-to-hire, éviter la perte de profils qualifiés, et fluidifier la mobilité des talents au sein de son réseau.",
+    ceoTitle: "Mot du CEO",
+    ceoText: "Nous croyons que le recrutement ne doit pas être un combat solitaire. Ensemble, nous construisons des écosystèmes où chaque talent compte.",
   },
   en: {
-    title: "Turn your Hub into an exclusive talent pool",
-    sub: "Cut time-to-hire by 75% and save €5,000 per hire — already used by Sciences Po and Wacano.",
+    heroTitle: "Turn your Hub into an exclusive talent pool",
+    heroSub: "Cut time-to-hire by 75% and save €5,000 per hire — already used by Sciences Po and Wacano.",
     cta: "Book a 15-min call",
     trusted: "Trusted by",
-    usecases: "Customer use cases",
-    wacanoSub: "startups that collaborate",
-  }
-};
-
-export default function Page() {
-  const [lang, setLang] = useState<'fr'|'en'>('fr');
-  const L = t[lang];
-
-  useEffect(() => {
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) if (e.isIntersecting) e.target.classList.add("animate-in");
-    }, { rootMargin: "0px 0px -10% 0px" });
-    document.querySelectorAll("[data-anim]").forEach(el => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-
-  return (
-    <main>
-      <NavBar onLang={setLang} />
-
-      <section className="container py-16">
-        <h1 className="text-3xl md:text-5xl font-poppins font-semibold mb-4" data-anim>{L.title}</h1>
-        <p className="text-lg md:text-xl text-ink/80 mb-6" data-anim>{L.sub}</p>
-        <a href="https://cal.com/david-10but/15min" target="_blank" className="rounded-md bg-accent text-white font-medium px-5 py-3 shadow-soft hover:opacity-90 transition" data-anim>
-          {L.cta}
-        </a>
-
-        <div className="mt-10 border rounded-xl p-4 inline-block shadow-soft" data-anim>
-          <div className="text-xs tracking-widest uppercase text-accent font-poppins">{L.trusted}</div>
-          <div className="mt-3 flex items-center gap-4">
-            <img src="/images/sciencespo.png" alt="Sciences Po" className="h-7 w-auto" />
-            <span className="w-px h-6 bg-black/10" />
-            <img src="/images/wacano.jpg" alt="Wacano" className="h-7 w-auto" />
-          </div>
-        </div>
-      </section>
-
-      <section className="container py-16 border-t">
-        <h2 className="text-2xl md:text-4xl font-poppins font-semibold mb-6" data-anim>{L.usecases}</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="rounded-xl border p-6 shadow-soft" data-anim>
-            <img src="/images/sciencespo.png" alt="Sciences Po" className="h-7 w-auto mb-3" />
-            <h3 className="font-poppins font-semibold mb-2">Sciences Po — Communauté alumni & startups</h3>
-            <p>Sciences Po permet à ses startups et à sa communauté alumni de créer un réseau de candidats partageant leurs valeurs et leurs besoins — un vivier préqualifié, exclusif à leur écosystème.</p>
-          </div>
-          <div className="rounded-xl border p-6 shadow-soft" data-anim>
-            <img src="/images/wacano.jpg" alt="Wacano" className="h-7 w-auto mb-3" />
-            <h3 className="font-poppins font-semibold mb-1">Wacano — {L.wacanoSub}</h3>
-            <p>Wacano met en commun les “médaillés d’argent” de ses 56 startups pour réduire le time-to-hire, éviter la perte de profils qualifiés, et fluidifier la mobilité des talents au sein de son réseau.</p>
-          </div>
-        </div>
-      </section>
-
-      <footer className="border-t">
-        <div className="container py-8 text-sm text-ink/70 flex items-center justify-between">
-          <p>© {new Date().getFullYear()} 10but</p>
-          <a href="https://cal.com/david-10but/15min" target="_blank" className="bg-accent text-white px-4 py-2 rounded-md font-medium shadow-soft">{
-            L.cta
-          }</a>
-        </div>
-      </footer>
-    </main>
-  );
-}
+    probTitle: "Is your hub capturing the full value of its community?",
+    probText: "When each startup hires alone, qualified profiles get lost and ecosystem value drops — 45h wasted per hire and missed opportunities.",
+    pillarsTitle: "A shared talent infrastructure that transforms your hub",
+    pillar1Title: "Activate the ecosystem",
+    pillar1Text: "Talent flows between your startups. 100% adoption in 3 months.",
+    pillar2Title: "Accelerate growth",
+    pillar2Text: "75% reduction in t
