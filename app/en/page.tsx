@@ -13,7 +13,7 @@ function Section({ title, children }: { title?: string; children: React.ReactNod
   );
 }
 
-const L = EN_L = {
+const L = {
   heroTitle: "Turn your Hub into an exclusive talent pool",
   heroSub: "Cut time-to-hire by 75% and save €5,000 per hire — already used by Sciences Po and Wacano.",
   cta: "Book a 15-min call",
@@ -26,7 +26,7 @@ const L = EN_L = {
   pillar2Title: "Accelerate growth",
   pillar2Text: "75% reduction in time-to-hire.",
   pillar3Title: "Build a defensive asset",
-  pillar3Text: "An exclusive pool where every 'silver medalist' is kept.",
+  pillar3Text: "An exclusive pool where every ‘silver medalist’ is kept.",
   howTitle: "How it works",
   how1: "Connect all your startups for free.",
   how2: "Not-selected candidates automatically join the shared pool.",
@@ -38,7 +38,7 @@ const L = EN_L = {
   scpoTitle: "Sciences Po — Alumni & startups community",
   scpoText: "Sciences Po enables its startups and alumni community to create a network of candidates sharing their values and needs — a pre-qualified pool exclusive to their ecosystem.",
   wacanoTitle: "Wacano — startups that collaborate",
-  wacanoText: "Wacano shares the 'silver medalists' across its 56 startups to cut time-to-hire, prevent talent loss, and improve mobility inside its network.",
+  wacanoText: "Wacano shares the ‘silver medalists’ across its 56 startups to cut time-to-hire, prevent talent loss, and improve mobility inside its network.",
   faq: [
     {q:"Who owns the pool data?", a:"The hub maintains governance. 10but never exploits profiles outside your ecosystem."},
     {q:"Integrations?", a:"CSV export and ATS connections on request (Workable, Lever)."},
@@ -77,9 +77,9 @@ export default function Page() {
             <img src="/images/wacano.jpg" alt="Wacano logo" />
           </div>
           <div className="chips">
-            <span className="chip">Adoption 100% (en 3 mois)</span>
+            <span className="chip">100% adoption (3 months)</span>
             <span className="chip">–75% time-to-hire</span>
-            <span className="chip">5 000 € économisés / recrutement</span>
+            <span className="chip">€5,000 saved / hire</span>
           </div>
         </div>
       </section>
@@ -127,7 +127,7 @@ export default function Page() {
             <div className="bars"><span/><span/><span/></div>
             <h3 className="ptitle">{L.pillar1Title}</h3>
             <p className="ptext">{L.pillar1Text}</p>
-            <span className="kpibadge">+ circulation de profils</span>
+            <span className="kpibadge">+ circulating profiles</span>
           </div>
           <div className="pillar" data-anim>
             <div className="bars"><span/><span/><span/></div>
@@ -139,7 +139,7 @@ export default function Page() {
             <div className="bars"><span/><span/><span/></div>
             <h3 className="ptitle">{L.pillar3Title}</h3>
             <p className="ptext">{L.pillar3Text}</p>
-            <span className="kpibadge">10–100 € par “silver”</span>
+            <span className="kpibadge">€10–100 per silver</span>
           </div>
         </div>
       </Section>
@@ -148,8 +148,8 @@ export default function Page() {
       <Section title={L.howTitle}>
         <ol className="steps">
           <li className="step"><span className="badge">1</span>{L.how1} <span className="chip ml-2">⚡ 5 min</span></li>
-          <li className="step"><span className="badge">2</span>{L.how2} <span className="chip ml-2">↔︎ Automatique</span></li>
-          <li className="step"><span className="badge">3</span>{L.how3} <span className="chip ml-2">✅ Pairs-qualified</span></li>
+          <li className="step"><span className="badge">2</span>{L.how2} <span className="chip ml-2">↔︎ Automatic</span></li>
+          <li className="step"><span className="badge">3</span>{L.how3} <span className="chip ml-2">✅ Peer-qualified</span></li>
         </ol>
         <a href="https://cal.com/david-10but/15min" target="_blank" className="btn-cta">{L.cta}</a>
       </Section>
