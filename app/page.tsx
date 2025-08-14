@@ -58,39 +58,41 @@ const t = {
 
 
 
+
 function NetworkCVAnim() {
   const points = [
     [120,60],[80,160],[160,240],[280,80],[260,180],[340,260],[460,60],[520,140],[480,220]
   ];
-  const linkEls = points.map((pt, i) => (
-    <line key={"l"+i} x1={320} y1={160} x2={pt[0]} y2={pt[1]} className={"ln l" + (i % 3)} />
-  ));
-  const nodeEls = points.map((pt, i) => (
-    <circle key={"n"+i} cx={pt[0]} cy={pt[1]} r={8} className={"nd n" + (i % 4)} />
-  ));
-  const inflowEls = points.slice(0,9).map((pt, i) => (
-    <circle key={"in"+i} cx={100} cy={50 + i*6} r={4} className={"vp to-hub d" + (i % 6)} />
-  ));
+  const elements: JSX.Element[] = [];
+
+  // Links + Nodes
+  points.forEach((pt, i) => {
+    elements.push(<line key={"l"+i} x1={320} y1={160} x2={pt[0]} y2={pt[1]} className={"ln l" + (i % 3)} />);
+    elements.push(<circle key={"n"+i} cx={pt[0]} cy={pt[1]} r={8} className={"nd n" + (i % 4)} />);
+  });
+
+  // Inflow circles to hub
+  points.slice(0,9).forEach((pt, i) => {
+    elements.push(<circle key={"in"+i} cx={100} cy={50 + i*6} r={4} className={"vp to-hub d" + (i % 6)} />);
+  });
+
+  // Central CV card
+  elements.push(<rect key="cv-card" x={280} y={120} width={80} height={80} rx={10} className="cv-card" />);
+  elements.push(<text key="cv-text" x={320} y={165} textAnchor="middle" className="cv-text">CV</text>);
+  elements.push(<circle key="cv-glow" cx={320} cy={160} r={60} className="cv-glow" />);
+
   return (
     <div className="network-anim" aria-hidden="true">
       <svg viewBox="0 0 640 320" className="w-full h-auto">
         <defs>
           <clipPath id="hub"><rect x={420} y={40} width={140} height={80} rx={10} /></clipPath>
         </defs>
-        <g>
-          <g className="links">{linkEls}</g>
-          <g className="nodes">{nodeEls}</g>
-          <g className="cv">
-            <rect x={280} y={120} width={80} height={80} rx={10} className="cv-card" />
-            <text x={320} y={165} textAnchor="middle" className="cv-text">CV</text>
-            <circle cx={320} cy={160} r={60} className="cv-glow" />
-          </g>
-          <g clipPath="url(#hub)">{inflowEls}</g>
-        </g>
+        <g>{elements}</g>
       </svg>
     </div>
   );
 }
+
 
 
 
