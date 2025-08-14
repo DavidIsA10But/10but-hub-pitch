@@ -84,7 +84,7 @@ function NetworkCVAnim() {
 }
         <rect x="420" y="40" width="140" height="80" rx="10" className="hub-box"/>
         {Array.from({ length: 9 }).map((_, i) => (
-          <circle key={`in-${i}`} cx="100" cy={50 + i*6} r="4" className={`vp to-hub d${i%6}`} clipPath="url(#hub)"/>
+          <circle key={"in-" + i} cx="100" cy={50 + i*6} r="4" className={"vp to-hub d" + (i % 6)} clipPath="url(#hub)"/>
         ))}
       </svg>
     </div>

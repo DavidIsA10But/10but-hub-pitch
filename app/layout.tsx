@@ -1,15 +1,16 @@
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Inter, Poppins } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({ subsets: ["latin"], weight: ["600","700"], variable: "--font-poppins" });
 
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#ffffff" };
+
 export const metadata: Metadata = {
   title: "10but — Écosystème de talents pour hubs",
   description: "Transformez votre hub en vivier de talents exclusif.",
-  viewport: "width=device-width, initial-scale=1",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
   themeColor: "#ffffff",
   openGraph: {
