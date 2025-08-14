@@ -1,3 +1,4 @@
+
 "use client";
 import { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
@@ -107,7 +108,7 @@ export default function Page() {
         </div>
       </section>
 
-      {/* PROBLÈME + mini réseau simple (SVG statique, sans map) */}
+      {/* PROBLÈME + mini réseau statique */}
       <Section title={L.probTitle}>
         <p className="text-ink/80 mb-6">{L.probText}</p>
         <div className="network">
@@ -118,7 +119,6 @@ export default function Page() {
                 <stop offset="100%" stopColor="#E63946" stopOpacity="0.1" />
               </radialGradient>
             </defs>
-            {/* liens */}
             <g>
               <line x1="320" y1="120" x2="120" y2="40" className="ln"/>
               <line x1="320" y1="120" x2="80"  y2="120" className="ln"/>
@@ -127,7 +127,6 @@ export default function Page() {
               <line x1="320" y1="120" x2="520" y2="120" className="ln"/>
               <line x1="320" y1="120" x2="480" y2="200" className="ln"/>
             </g>
-            {/* noeuds */}
             <g>
               <circle cx="120" cy="40"  r="8" className="nd n1"/>
               <circle cx="80"  cy="120" r="8" className="nd n2"/>
@@ -136,7 +135,6 @@ export default function Page() {
               <circle cx="520" cy="120" r="8" className="nd n2"/>
               <circle cx="480" cy="200" r="8" className="nd n3"/>
             </g>
-            {/* CV central */}
             <g>
               <circle cx="320" cy="120" r="60" fill="url(#gold)" className="cv-glow"/>
               <rect x="290" y="90" width="60" height="60" rx="10" className="cv-card"/>
