@@ -6,7 +6,7 @@ import PixelRain from "../../components/PixelRain";
 
 function Section({ title, children }: { title?: string; children: React.ReactNode }) {
   return (
-    <section className="container py-section md:py-section-lg">
+    <section className="container py-24 md:py-28">
       {title ? <h2 className="text-2xl md:text-4xl font-poppins font-semibold mb-6" data-anim>{title}</h2> : null}
       <div data-anim>{children}</div>
     </section>
@@ -14,8 +14,8 @@ function Section({ title, children }: { title?: string; children: React.ReactNod
 }
 
 const L = {
-  heroTitle: "Turn your Hub into an exclusive talent pool",
-  heroSub: "Cut time-to-hire by 75% and save €5,000 per hire — already used by Sciences Po and Wacano.",
+  heroTitle: "Transformez votre Hub en un vivier de talents exclusif",
+  heroSub: "Réduisez le time-to-hire de 75% et économisez 5 000 € par recrutement — déjà adopté par Sciences Po et Wacano.",
   cta: "Book a 15-min call",
   trusted: "Trusted by",
   probTitle: "Is your hub capturing the full value of its community?",
@@ -26,37 +26,36 @@ const L = {
   pillar2Title: "Accelerate growth",
   pillar2Text: "75% reduction in time-to-hire.",
   pillar3Title: "Build a defensive asset",
-  pillar3Text: "An exclusive pool where every ‘silver medalist’ is kept.",
+  pillar3Text: "An exclusive pool where every “silver medalist” is kept.",
   howTitle: "How it works",
   how1: "Connect all your startups for free.",
   how2: "Not-selected candidates automatically join the shared pool.",
   how3: "Each startup accesses peer pre-qualified talent.",
-  strip: "Every ‘no’ to a good candidate is an asset that evaporates.",
+  strip: "Every “no” to a good candidate is an asset that evaporates.",
   offerTitle: "Free until January 2026 — limited to the next 5 partner hubs",
   offerSub: "Afterwards: €10/month per startup (paid by the hub or startups).",
   usecases: "Customer use cases",
   scpoTitle: "Sciences Po — Alumni & startups community",
   scpoText: "Sciences Po enables its startups and alumni community to create a network of candidates sharing their values and needs — a pre-qualified pool exclusive to their ecosystem.",
   wacanoTitle: "Wacano — startups that collaborate",
-  wacanoText: "Wacano shares the ‘silver medalists’ across its 56 startups to cut time-to-hire, prevent talent loss, and improve mobility inside its network.",
+  wacanoText: "Wacano shares the “silver medalists” across its 56 startups to cut time-to-hire, prevent talent loss, and improve mobility inside its network.",
   faq: [
-  {
-    q: "Who owns the pool data?",
-    a: "The hub maintains governance. If it accesses profiles from other hubs, it’s within a participative credit system: add a candidate, get a credit; view a candidate, spend a credit."
-  },
-  {
-    q: "Integrations?",
-    a: "We handle everything: CSV export and ATS connections (Workable, Lever)."
-  },
-  {
-    q: "Commitment?",
-    a: "Free until January 1, 2026, cancel anytime."
-  }
-]
+    {
+      q: "Who owns the pool data?",
+      a: "The hub maintains governance. If it accesses profiles from other hubs, it’s within a participative credit system: add a candidate, get a credit; view a candidate, spend a credit."
+    },
+    {
+      q: "Integrations?",
+      a: "We handle everything: CSV export and ATS connections (Workable, Lever)."
+    },
+    {
+      q: "Commitment?",
+      a: "Free until January 1, 2026, cancel anytime."
+    }
+  ]
 };
 
 export default function Page() {
-
   useEffect(() => {
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) if (e.isIntersecting) e.target.classList.add("animate-in");
@@ -70,12 +69,12 @@ export default function Page() {
       <PixelRain />
       <NavBar />
 
-      {/* HERO */}
-      <section className="container pt-36 pb-24text-3xl md:text-5xl font-poppins font-semibold mb-5" data-anim>{L.heroTitle}</h1>
+      {/* HERO (extra spacing from header) */}
+      <section className="container pt-36 pb-24">
+        <h1 className="text-3xl md:text-5xl font-poppins font-semibold mb-5" data-anim>{L.heroTitle}</h1>
         <p className="text-lg md:text-xl text-ink/80 mb-8" data-anim>{L.heroSub}</p>
         <div className="flex gap-3" data-anim>
           <a href="https://cal.com/david-10but/15min" target="_blank" className="btn-cta">{L.cta}</a>
-          <button id="open-demo" className="rounded-md border border-ink/10 px-4 py-3">Watch the demo (3 min)</button>
         </div>
         <div className="mt-10 trust" data-anim>
           <div className="trust-title">{L.trusted}</div>
@@ -135,7 +134,7 @@ export default function Page() {
             <div className="bars"><span/><span/><span/></div>
             <h3 className="ptitle">{L.pillar1Title}</h3>
             <p className="ptext">{L.pillar1Text}</p>
-            <span className="kpibadge">+ circulating profiles</span>
+            <span className="kpibadge">+ circulation de profils</span>
           </div>
           <div className="pillar" data-anim>
             <div className="bars"><span/><span/><span/></div>
@@ -147,7 +146,7 @@ export default function Page() {
             <div className="bars"><span/><span/><span/></div>
             <h3 className="ptitle">{L.pillar3Title}</h3>
             <p className="ptext">{L.pillar3Text}</p>
-            <span className="kpibadge">€10–100 per silver</span>
+            <span className="kpibadge">10–100 € par “silver”</span>
           </div>
         </div>
       </Section>
@@ -156,8 +155,8 @@ export default function Page() {
       <Section title={L.howTitle}>
         <ol className="steps">
           <li className="step"><span className="badge">1</span>{L.how1} <span className="chip ml-2">⚡ 5 min</span></li>
-          <li className="step"><span className="badge">2</span>{L.how2} <span className="chip ml-2">↔︎ Automatic</span></li>
-          <li className="step"><span className="badge">3</span>{L.how3} <span className="chip ml-2">✅ Peer-qualified</span></li>
+          <li className="step"><span className="badge">2</span>{L.how2} <span className="chip ml-2">↔︎ Automatique</span></li>
+          <li className="step"><span className="badge">3</span>{L.how3} <span className="chip ml-2">✅ Pairs-qualified</span></li>
         </ol>
         <a href="https://cal.com/david-10but/15min" target="_blank" className="btn-cta">{L.cta}</a>
       </Section>
@@ -172,8 +171,8 @@ export default function Page() {
           <div className="flex items-center gap-10">
             <a href="https://cal.com/david-10but/15min" target="_blank" className="btn-cta">{L.cta}</a>
             <div className="text-sm">
-              <div className="font-poppins">Remaining slots: <span className="text-accent font-semibold">2/5</span></div>
-              <div className="text-ink/60">No commitment</div>
+              <div className="font-poppins">Places restantes : <span className="text-accent font-semibold">2/5</span></div>
+              <div className="text-ink/60">Sans engagement</div>
             </div>
           </div>
         </div>
@@ -213,7 +212,7 @@ export default function Page() {
           <p>© {new Date().getFullYear()} 10but</p>
           <div className="flex gap-3">
             <a href="https://cal.com/david-10but/15min" target="_blank" className="btn-cta">{L.cta}</a>
-            </div>
+          </div>
         </div>
       </footer>
 
