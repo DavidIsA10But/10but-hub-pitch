@@ -3,6 +3,9 @@
 import { useEffect } from "react";
 import NavBar from "../../components/NavBar";
 import PixelRain from "../../components/PixelRain";
+import { getMessages } from "../../lib/i18n";
+
+const L = getMessages("en");
 
 function Section({ title, children }: { title?: string; children: React.ReactNode }) {
   return (
@@ -12,48 +15,6 @@ function Section({ title, children }: { title?: string; children: React.ReactNod
     </section>
   );
 }
-
-const L = {
-  heroTitle: "Transformez votre Hub en un vivier de talents exclusif",
-  heroSub: "Réduisez le time-to-hire de 75% et économisez 5 000 € par recrutement — déjà adopté par Sciences Po et Wacano.",
-  cta: "Book a 15-min call",
-  trusted: "Trusted by",
-  probTitle: "Is your hub capturing the full value of its community?",
-  probText: "When each startup hires alone, qualified profiles get lost and ecosystem value drops — 45h wasted per hire and missed opportunities.",
-  pillarsTitle: "A shared talent infrastructure that transforms your hub",
-  pillar1Title: "Activate the ecosystem",
-  pillar1Text: "Talent flows between your startups.",
-  pillar2Title: "Accelerate growth",
-  pillar2Text: "75% reduction in time-to-hire.",
-  pillar3Title: "Build a defensive asset",
-  pillar3Text: "An exclusive pool where every “silver medalist” is kept.",
-  howTitle: "How it works",
-  how1: "Connect all your startups for free.",
-  how2: "Not-selected candidates automatically join the shared pool.",
-  how3: "Each startup accesses peer pre-qualified talent.",
-  strip: "Every “no” to a good candidate is an asset that evaporates.",
-  offerTitle: "Free until January 2026 — limited to the next 5 partner hubs",
-  offerSub: "Afterwards: €10/month per startup (paid by the hub or startups).",
-  usecases: "Customer use cases",
-  scpoTitle: "Sciences Po — Alumni & startups community",
-  scpoText: "Sciences Po enables its startups and alumni community to create a network of candidates sharing their values and needs — a pre-qualified pool exclusive to their ecosystem.",
-  wacanoTitle: "Wacano — startups that collaborate",
-  wacanoText: "Wacano shares the “silver medalists” across its 56 startups to cut time-to-hire, prevent talent loss, and improve mobility inside its network.",
-  faq: [
-    {
-      q: "Who owns the pool data?",
-      a: "The hub maintains governance. If it accesses profiles from other hubs, it’s within a participative credit system: add a candidate, get a credit; view a candidate, spend a credit."
-    },
-    {
-      q: "Integrations?",
-      a: "We handle everything: CSV export and ATS connections (Workable, Lever)."
-    },
-    {
-      q: "Commitment?",
-      a: "Free until January 1, 2026, cancel anytime."
-    }
-  ]
-};
 
 export default function Page() {
   useEffect(() => {
@@ -70,7 +31,7 @@ export default function Page() {
       <NavBar />
 
       {/* HERO (extra spacing from header) */}
-      <section className="container pt-36 pb-24">
+      <section className="container pt-48 pb-28">
         <h1 className="text-3xl md:text-5xl font-poppins font-semibold mb-5" data-anim>{L.heroTitle}</h1>
         <p className="text-lg md:text-xl text-ink/80 mb-8" data-anim>{L.heroSub}</p>
         <div className="flex gap-3" data-anim>
@@ -84,9 +45,9 @@ export default function Page() {
             <img src="/images/wacano.jpg" alt="Wacano logo" />
           </div>
           <div className="chips">
-            <span className="chip">100% adoption (3 months)</span>
-            <span className="chip">–75% time-to-hire</span>
-            <span className="chip">€5,000 saved / hire</span>
+            <span className="chip">{L.chips.adoption}</span>
+            <span className="chip">{L.chips.tth}</span>
+            <span className="chip">{L.chips.saving}</span>
           </div>
         </div>
       </section>
@@ -134,19 +95,19 @@ export default function Page() {
             <div className="bars"><span/><span/><span/></div>
             <h3 className="ptitle">{L.pillar1Title}</h3>
             <p className="ptext">{L.pillar1Text}</p>
-            <span className="kpibadge">+ circulation de profils</span>
+            <span className="kpibadge">{L.chips.kpi1}</span>
           </div>
           <div className="pillar" data-anim>
             <div className="bars"><span/><span/><span/></div>
             <h3 className="ptitle">{L.pillar2Title}</h3>
             <p className="ptext">{L.pillar2Text}</p>
-            <span className="kpibadge">–75% TTH</span>
+            <span className="kpibadge">{L.chips.kpi2}</span>
           </div>
           <div className="pillar" data-anim>
             <div className="bars"><span/><span/><span/></div>
             <h3 className="ptitle">{L.pillar3Title}</h3>
             <p className="ptext">{L.pillar3Text}</p>
-            <span className="kpibadge">10–100 € par “silver”</span>
+            <span className="kpibadge">{L.chips.kpi3}</span>
           </div>
         </div>
       </Section>
@@ -154,9 +115,9 @@ export default function Page() {
       {/* HOW IT WORKS */}
       <Section title={L.howTitle}>
         <ol className="steps">
-          <li className="step"><span className="badge">1</span>{L.how1} <span className="chip ml-2">⚡ 5 min</span></li>
-          <li className="step"><span className="badge">2</span>{L.how2} <span className="chip ml-2">↔︎ Automatique</span></li>
-          <li className="step"><span className="badge">3</span>{L.how3} <span className="chip ml-2">✅ Pairs-qualified</span></li>
+          <li className="step"><span className="badge">1</span>{L.how1} <span className="chip ml-2">5 min</span></li>
+          <li className="step"><span className="badge">2</span>{L.how2} <span className="chip ml-2">↔︎ Automatic</span></li>
+          <li className="step"><span className="badge">3</span>{L.how3} <span className="chip ml-2">✅ Peer-qualified</span></li>
         </ol>
         <a href="https://cal.com/david-10but/15min" target="_blank" className="btn-cta">{L.cta}</a>
       </Section>
@@ -171,8 +132,8 @@ export default function Page() {
           <div className="flex items-center gap-10">
             <a href="https://cal.com/david-10but/15min" target="_blank" className="btn-cta">{L.cta}</a>
             <div className="text-sm">
-              <div className="font-poppins">Places restantes : <span className="text-accent font-semibold">2/5</span></div>
-              <div className="text-ink/60">Sans engagement</div>
+              <div className="font-poppins">{L.chips.slotsLabel}<span className="text-accent font-semibold">2/5</span></div>
+              <div className="text-ink/60">{L.chips.noCommit}</div>
             </div>
           </div>
         </div>
@@ -215,22 +176,6 @@ export default function Page() {
           </div>
         </div>
       </footer>
-
-      {/* Modal (Cal embed) */}
-      <div id="modal-root"></div>
-      <script dangerouslySetInnerHTML={{__html: `
-        (function(){
-          var btn = document.getElementById('open-demo');
-          if(!btn) return;
-          btn.addEventListener('click', function(){
-            var root = document.getElementById('modal-root');
-            if(!root) return;
-            root.innerHTML = '<div class="modal-backdrop" id="mb"><div class="modal"><header><strong>Demo</strong><button id="close">Close</button></header><iframe src="https://cal.com/david-10but/15min?embed=true"></iframe></div></div>';
-            document.getElementById('close').onclick = function(){ document.getElementById('mb').remove(); };
-            document.getElementById('mb').onclick = function(e){ if(e.target.id==="mb") e.currentTarget.remove(); };
-          });
-        })();
-      `}} />
     </main>
   );
 }
