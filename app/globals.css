@@ -117,3 +117,37 @@ html, body { height: 100%; }
   box-shadow: 0 10px 30px rgba(0,0,0,.06);
 }
 .usecase-logo { height: 28px; width: auto; margin-bottom: 10px; }
+
+
+/* ---- Network animation (problem) ---- */
+.network-anim .ln { stroke: rgba(26,26,26,.15); stroke-width: 2; }
+.network-anim .ln.l0 { animation: pulseLine 2.2s ease-in-out infinite; }
+.network-anim .ln.l1 { animation: pulseLine 2.2s .3s ease-in-out infinite; }
+.network-anim .ln.l2 { animation: pulseLine 2.2s .6s ease-in-out infinite; }
+@keyframes pulseLine {
+  0%,100% { stroke: rgba(26,26,26,.15); }
+  50% { stroke: rgba(230,57,70,.5); }
+}
+.network-anim .nd { fill: #fff; stroke: rgba(26,26,26,.2); stroke-width: 2; }
+.network-anim .nd.n0 { animation: pop 2.4s infinite; }
+.network-anim .nd.n1 { animation: pop 2.4s .2s infinite; }
+.network-anim .nd.n2 { animation: pop 2.4s .4s infinite; }
+.network-anim .nd.n3 { animation: pop 2.4s .6s infinite; }
+@keyframes pop {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+.network-anim .cv-card { fill: #fffbe6; stroke: #E63946; stroke-width: 2; }
+.network-anim .cv-text { font: 700 20px var(--font-poppins); fill: #E63946; }
+.network-anim .cv-glow { fill: none; stroke: rgba(230,57,70,.22); stroke-width: 4; filter: blur(2px); animation: glow 2.6s ease-in-out infinite; }
+@keyframes glow { 0%,100% { r: 56; opacity: .4 } 50% { r: 66; opacity: .9 } }
+
+/* ---- Footer CTA boost ---- */
+footer .cta-strong {
+  background:#E63946; color:#fff; padding:10px 16px; border-radius:10px;
+  box-shadow: 0 10px 30px rgba(230,57,70,.25); font-weight:600;
+}
+footer .lang-pill {
+  border:1px solid rgba(230,57,70,.5); padding:8px 12px; border-radius:10px;
+  font-weight:500;
+}

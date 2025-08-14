@@ -15,7 +15,7 @@ export default function NavBar({ onLang }: { onLang: (lang: 'fr'|'en') => void }
           <a href="https://cal.com/david-10but/15min" target="_blank" className="rounded-md bg-accent text-white font-medium px-4 py-2 shadow-soft hover:opacity-90 transition">
             {lang==='fr' ? "Réserver un appel" : "Book a call"}
           </a>
-          <button onClick={switchLang} className="text-sm underline decoration-accent/50 underline-offset-4">
+          <button onClick={switchLang} className="text-sm lang-pill">
             {lang==='fr' ? "EN" : "FR"}
           </button>
         </div>

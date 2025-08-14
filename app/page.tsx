@@ -24,6 +24,9 @@ const t = {
     offerTitle: "Gratuit jusqu’en janvier 2026 — réservé aux 5 prochains hubs partenaires.",
     offerSub: "Tarif ensuite : 10 €/mois par startup (prise en charge par le hub ou par les startups).",
     ceoTitle: "Mot du CEO",
+    trustedBy: "Ils nous font confiance",
+    usecasesTitle: "Use cases clients",
+    wacanoSub: "des startups qui collaborent",
     ceoText: "Nous croyons que le recrutement ne doit pas être un combat solitaire. Ensemble, nous construisons des écosystèmes où chaque talent compte.",
   },
   en: {
@@ -44,22 +47,41 @@ const t = {
     offerTitle: "Free until January 2026 — limited to the next 5 partner hubs.",
     offerSub: "Then €10/month per startup (paid by hub or startups).",
     ceoTitle: "From our CEO",
+    trustedBy: "Trusted by",
+    usecasesTitle: "Customer use cases",
+    wacanoSub: "startups that collaborate",
     ceoText: "Hiring shouldn’t be a solitary fight. Together, we build ecosystems where every talent counts.",
   }
 };
 
-function ValueCaptureAnim() {
+
+function NetworkCVAnim() {
+  // SVG network of startups with a glowing CV in the center
   return (
-    <div className="value-anim" aria-hidden="true">
-      <svg viewBox="0 0 600 160" className="w-full h-auto">
-        <defs>
-          <clipPath id="hub">
-            <rect x="420" y="40" width="140" height="80" rx="10" />
-          </clipPath>
-        </defs>
-        {Array.from({ length: 18 }).map((_, i) => (
-          <circle key={i} cx={40 + (i%6)*50} cy={40 + Math.floor(i/6)*40} r="4" className="vp"/>
-        ))}
+    <div className="network-anim" aria-hidden="true">
+      <svg viewBox="0 0 640 320" className="w-full h-auto">
+        {/* connections */}
+        <g className="links">
+          {[[120,60],[80,160],[160,240],[280,80],[260,180],[340,260],[460,60],[520,140],[480,220]].map((pt,i)=> (
+            <line key={i} x1="320" y1="160" x2={pt[0]} y2={pt[1]} className={`ln l${i%3}`} />
+          ))}
+        </g>
+        {/* nodes */}
+        <g className="nodes">
+          {[[120,60],[80,160],[160,240],[280,80],[260,180],[340,260],[460,60],[520,140],[480,220]].map((pt,i)=> (
+            <circle key={i} cx={pt[0]} cy={pt[1]} r="8" className={`nd n${i%4}`} />
+          ))}
+        </g>
+        {/* central CV card */}
+        <g className="cv">
+          <rect x="280" y="120" width="80" height="80" rx="10" className="cv-card" />
+          <text x="320" y="165" textAnchor="middle" className="cv-text">CV</text>
+          <circle cx="320" cy="160" r="60" className="cv-glow" />
+        </g>
+      </svg>
+    </div>
+  );
+}
         <rect x="420" y="40" width="140" height="80" rx="10" className="hub-box"/>
         {Array.from({ length: 9 }).map((_, i) => (
           <circle key={`in-${i}`} cx="100" cy={50 + i*6} r="4" className={`vp to-hub d${i%6}`} clipPath="url(#hub)"/>
@@ -100,7 +122,7 @@ export default function Page() {
                 </a>
               </div>
               <div className="mt-8 trust-window" data-animate>
-                <div className="trust-title">Ils nous font confiance</div>
+                <div className="trust-title">{L.trustedBy}</div>
                 <div className="trust-logos">
                   <img src="/images/sciencespo.png" alt="Sciences Po" />
                   <span className="trust-divider" />
@@ -115,7 +137,7 @@ export default function Page() {
         <Section title={L.probTitle}>
           <p data-animate>{L.probText}</p>
           <div className="mt-8" data-animate>
-            <ValueCaptureAnim />
+            <NetworkCVAnim />
           </div>
         </Section>
 
@@ -174,7 +196,7 @@ export default function Page() {
         </div>
 
         {/* Use cases clients */}
-        <Section title="Use cases clients">
+        <Section title={L.usecasesTitle}>
           <div className="grid md:grid-cols-2 gap-6" data-animate>
             <div className="usecase">
               <img src="/images/sciencespo.png" alt="Sciences Po" className="usecase-logo" />
@@ -186,10 +208,9 @@ export default function Page() {
             </div>
             <div className="usecase">
               <img src="/images/wacano.jpg" alt="Wacano" className="usecase-logo" />
-              <h3>Wacano — 56 startups</h3>
+              <h3>Wacano — {L.wacanoSub}</h3>
               <p>
-                Wacano met en commun les “médaillés d’argent” de ses 56 startups pour réduire le time-to-hire,
-                éviter la perte de profils qualifiés, et fluidifier la mobilité des talents au sein de son réseau.
+                Wacano met en commun les “médaillés d’argent” de ses 56 startups pour réduire le time-to-hire, éviter la perte de profils qualifiés, et fluidifier la mobilité des talents au sein de son réseau.
               </p>
             </div>
           </div>
@@ -206,9 +227,10 @@ export default function Page() {
         <footer className="safe-content border-t">
           <div className="mx-auto max-w-6xl px-6 py-8 text-sm text-ink/60 flex flex-col md:flex-row items-center justify-between gap-3">
             <p>© {new Date().getFullYear()} 10but</p>
-            <a href="https://cal.com/david-10but/15min" target="_blank" className="text-accent underline underline-offset-4">
+            <a href="https://cal.com/david-10but/15min" target="_blank" className="cta-strong">
               {L.cta}
             </a>
+            <span className="lang-pill cursor-default">{lang === "fr" ? "FR" : "EN"}</span>
           </div>
         </footer>
       </div>
