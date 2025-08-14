@@ -40,10 +40,19 @@ const L = {
   wacanoTitle: "Wacano — des startups qui collaborent",
   wacanoText: "Wacano met en commun les “médaillés d’argent” de ses 56 startups pour réduire le time-to-hire, éviter la perte de profils qualifiés, et fluidifier la mobilité des talents au sein de son réseau.",
   faq: [
-    {q:"Qui possède les données du vivier ?", a:"Le hub conserve la gouvernance. Si le hub accède aux profils d’autres hubs, c’est dans le cadre d’un système participatif avec crédits : ajoutez un candidat, vous recevez un crédit ; découvrez un candidat, vous payez un crédit.
-    {q:"Quelles intégrations ?", a:"Nous nous occupons de tout : export CSV et connexions ATS (Workable, Lever).."},
-    {q:"Quel engagement ?", a:"Offre gratuite jusqu’au 1er janvier 2026, résiliable à tout moment.
-  ]
+  {
+    q: "Qui possède les données du vivier ?",
+    a: "Le hub conserve la gouvernance. Si le hub accède aux profils d’autres hubs, c’est dans le cadre d’un système participatif avec crédits : ajoutez un candidat, vous recevez un crédit ; découvrez un candidat, vous payez un crédit."
+  },
+  {
+    q: "Quelles intégrations ?",
+    a: "Nous nous occupons de tout : export CSV et connexions ATS (Workable, Lever)."
+  },
+  {
+    q: "Quel engagement ?",
+    a: "Offre gratuite jusqu’au 1er janvier 2026, résiliable à tout moment."
+  }
+]
 };
 
 export default function Page() {
@@ -62,8 +71,7 @@ export default function Page() {
       <NavBar />
 
       {/* HERO */}
-      <section className="container pt-36>
-        <h1 className="text-3xl md:text-5xl font-poppins font-semibold mb-5" data-anim>{L.heroTitle}</h1>
+      <section className="container pt-36 pb-24text-3xl md:text-5xl font-poppins font-semibold mb-5" data-anim>{L.heroTitle}</h1>
         <p className="text-lg md:text-xl text-ink/80 mb-8" data-anim>{L.heroSub}</p>
         <div className="flex gap-3" data-anim>
           <a href="https://cal.com/david-10but/15min" target="_blank" className="btn-cta">{L.cta}</a>
