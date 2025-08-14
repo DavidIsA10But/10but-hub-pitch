@@ -40,9 +40,9 @@ const L = {
   wacanoTitle: "Wacano — startups that collaborate",
   wacanoText: "Wacano shares the ‘silver medalists’ across its 56 startups to cut time-to-hire, prevent talent loss, and improve mobility inside its network.",
   faq: [
-    {q:"Who owns the pool data?", a:"The hub maintains governance. 10but never exploits profiles outside your ecosystem."},
+    {q:"Who owns the pool data?", a:"The hub maintains governance. If it accesses profiles from other hubs, it’s within a participative credit system: add a candidate, get a credit; view a candidate, spend a credit.
     {q:"Integrations?", a:"CSV export and ATS connections on request (Workable, Lever)."},
-    {q:"Commitment?", a:"Free until January 31, 2026, cancel anytime."}
+    {q:"Commitment?", a:"Free until January 1, 2026, cancel anytime.
   ]
 };
 
@@ -62,7 +62,7 @@ export default function Page() {
       <NavBar />
 
       {/* HERO */}
-      <section className="container pt-section-lg pb-section">
+      <section className="container pt-36>
         <h1 className="text-3xl md:text-5xl font-poppins font-semibold mb-5" data-anim>{L.heroTitle}</h1>
         <p className="text-lg md:text-xl text-ink/80 mb-8" data-anim>{L.heroSub}</p>
         <div className="flex gap-3" data-anim>
@@ -205,8 +205,7 @@ export default function Page() {
           <p>© {new Date().getFullYear()} 10but</p>
           <div className="flex gap-3">
             <a href="https://cal.com/david-10but/15min" target="_blank" className="btn-cta">{L.cta}</a>
-            <a href="https://www.loom.com/" target="_blank" className="rounded-md border border-ink/10 px-4 py-2">Watch demo</a>
-          </div>
+            </div>
         </div>
       </footer>
 
