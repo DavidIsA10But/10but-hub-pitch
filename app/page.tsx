@@ -56,6 +56,7 @@ const t = {
 
 
 
+
 function NetworkCVAnim() {
   const points = [
     [120,60],[80,160],[160,240],[280,80],[260,180],[340,260],[460,60],[520,140],[480,220]
@@ -72,21 +73,24 @@ function NetworkCVAnim() {
   return (
     <div className="network-anim" aria-hidden="true">
       <svg viewBox="0 0 640 320" className="w-full h-auto">
-        <g className="links">{linkEls}</g>
-        <g className="nodes">{nodeEls}</g>
-        <g className="cv">
-          <rect x={280} y={120} width={80} height={80} rx={10} className="cv-card" />
-          <text x={320} y={165} textAnchor="middle" className="cv-text">CV</text>
-          <circle cx={320} cy={160} r={60} className="cv-glow" />
-        </g>
-        <g clipPath="url(#hub)">{inflowEls}</g>
         <defs>
           <clipPath id="hub"><rect x={420} y={40} width={140} height={80} rx={10} /></clipPath>
         </defs>
+        <g id="layer">
+          <g className="links">{linkEls}</g>
+          <g className="nodes">{nodeEls}</g>
+          <g className="cv">
+            <rect x={280} y={120} width={80} height={80} rx={10} className="cv-card" />
+            <text x={320} y={165} textAnchor="middle" className="cv-text">CV</text>
+            <circle cx={320} cy={160} r={60} className="cv-glow" />
+          </g>
+          <g clipPath="url(#hub)">{inflowEls}</g>
+        </g>
       </svg>
     </div>
   );
 }
+
 
         <g className="links">
           {[[120,60],[80,160],[160,240],[280,80],[260,180],[340,260],[460,60],[520,140],[480,220]].map((pt,i)=> (
