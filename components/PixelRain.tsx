@@ -11,13 +11,13 @@ export default function PixelRain() {
     const DPR = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
     function resize(){ c.width = window.innerWidth*DPR; c.height = window.innerHeight*DPR; }
     resize(); window.addEventListener("resize", resize);
-    const MAX = 260;
+    const MAX = 320;
     const dots: Dot[] = Array.from({length: MAX}).map(() => ({ x: Math.random()*c.width, y: Math.random()*c.height, s:(Math.random()*2+1)*DPR, v:(Math.random()*0.6+0.4)*DPR, a:Math.random()*0.6+0.2 }));
-    let raf=0, visible=80, sizeBoost=1;
+    let raf=0, visible=90, sizeBoost=1;
     const onScroll = () => {
       const docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
       const progress = Math.min(1, Math.max(0, window.scrollY / (docH - window.innerHeight + 1)));
-      visible = Math.floor(80 + progress * (MAX - 80));
+      visible = Math.floor(90 + progress * (MAX - 90));
       sizeBoost = 1 + progress * 0.6;
     };
     window.addEventListener("scroll", onScroll, { passive:true });

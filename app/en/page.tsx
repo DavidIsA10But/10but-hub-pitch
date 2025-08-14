@@ -1,8 +1,8 @@
 
 "use client";
 import { useEffect } from "react";
-import NavBar from "../components/NavBar";
-import PixelRain from "../components/PixelRain";
+import NavBar from "../../components/NavBar";
+import PixelRain from "../../components/PixelRain";
 
 function Section({ title, children }: { title?: string; children: React.ReactNode }) {
   return (
@@ -13,38 +13,40 @@ function Section({ title, children }: { title?: string; children: React.ReactNod
   );
 }
 
-const L = {
-  heroTitle: "Transformez votre Hub en un vivier de talents exclusif",
-  heroSub: "Réduisez le time-to-hire de 75% et économisez 5 000 € par recrutement — déjà adopté par Sciences Po et Wacano.",
-  cta: "Réserver un appel de 15 min",
-  trusted: "Ils nous font confiance",
-  probTitle: "Votre hub capture-t-il réellement toute la valeur de sa communauté ?",
-  probText: "Quand chaque startup recrute seule, des profils qualifiés se perdent et la valeur de l’écosystème diminue. Résultat : 45h gaspillées par recrutement et des opportunités manquées.",
-  pillarsTitle: "Une infrastructure de talents partagée qui transforme votre hub",
-  pillar1Title: "Activer l’écosystème",
-  pillar1Text: "Un réseau de talents qui circule entre vos startups.",
-  pillar2Title: "Accélérer la croissance",
-  pillar2Text: "Réduction du time-to-hire de 75%.",
-  pillar3Title: "Créer un actif défensif",
-  pillar3Text: "Un vivier exclusif où chaque “médaillé d’argent” est conservé.",
-  howTitle: "Comment ça marche",
-  how1: "Connexion gratuite de toutes vos startups à la plateforme.",
-  how2: "Les candidats non retenus rejoignent automatiquement le vivier commun.",
-  how3: "Chaque startup accède à des talents pré-qualifiés par leurs pairs.",
-  strip: "Chaque “non” à un bon candidat est un actif qui disparaît.",
-  offerTitle: "Gratuit jusqu’en janvier 2026 — réservé aux 5 prochains hubs partenaires",
-  offerSub: "Ensuite : 10 €/mois par startup (payé par le hub ou par les startups).",
-  usecases: "Use cases clients",
-  scpoTitle: "Sciences Po — Communauté alumni & startups",
-  scpoText: "Sciences Po permet à ses startups et à sa communauté alumni de créer un réseau de candidats partageant leurs valeurs et leurs besoins — un vivier préqualifié, exclusif à leur écosystème.",
-  wacanoTitle: "Wacano — des startups qui collaborent",
-  wacanoText: "Wacano met en commun les “médaillés d’argent” de ses 56 startups pour réduire le time-to-hire, éviter la perte de profils qualifiés, et fluidifier la mobilité des talents au sein de son réseau.",
+const L = EN_L = {
+  heroTitle: "Turn your Hub into an exclusive talent pool",
+  heroSub: "Cut time-to-hire by 75% and save €5,000 per hire — already used by Sciences Po and Wacano.",
+  cta: "Book a 15-min call",
+  trusted: "Trusted by",
+  probTitle: "Is your hub capturing the full value of its community?",
+  probText: "When each startup hires alone, qualified profiles get lost and ecosystem value drops — 45h wasted per hire and missed opportunities.",
+  pillarsTitle: "A shared talent infrastructure that transforms your hub",
+  pillar1Title: "Activate the ecosystem",
+  pillar1Text: "Talent flows between your startups.",
+  pillar2Title: "Accelerate growth",
+  pillar2Text: "75% reduction in time-to-hire.",
+  pillar3Title: "Build a defensive asset",
+  pillar3Text: "An exclusive pool where every 'silver medalist' is kept.",
+  howTitle: "How it works",
+  how1: "Connect all your startups for free.",
+  how2: "Not-selected candidates automatically join the shared pool.",
+  how3: "Each startup accesses peer pre-qualified talent.",
+  strip: "Every ‘no’ to a good candidate is an asset that evaporates.",
+  offerTitle: "Free until January 2026 — limited to the next 5 partner hubs",
+  offerSub: "Afterwards: €10/month per startup (paid by the hub or startups).",
+  usecases: "Customer use cases",
+  scpoTitle: "Sciences Po — Alumni & startups community",
+  scpoText: "Sciences Po enables its startups and alumni community to create a network of candidates sharing their values and needs — a pre-qualified pool exclusive to their ecosystem.",
+  wacanoTitle: "Wacano — startups that collaborate",
+  wacanoText: "Wacano shares the 'silver medalists' across its 56 startups to cut time-to-hire, prevent talent loss, and improve mobility inside its network.",
   faq: [
-    {q:"Qui possède les données du vivier ?", a:"Le hub conserve la gouvernance. 10but n’exploite pas les profils en dehors de votre écosystème."},
-    {q:"Quelles intégrations ?", a:"Export CSV et connexions ATS sur demande (Workable, Lever)."},
-    {q:"Quel engagement ?", a:"Offre gratuite jusqu’au 31 janvier 2026, résiliable à tout moment."}
+    {q:"Who owns the pool data?", a:"The hub maintains governance. 10but never exploits profiles outside your ecosystem."},
+    {q:"Integrations?", a:"CSV export and ATS connections on request (Workable, Lever)."},
+    {q:"Commitment?", a:"Free until January 31, 2026, cancel anytime."}
   ]
 };
+
+const L = EN_L;
 
 export default function Page() {
 
@@ -67,14 +69,14 @@ export default function Page() {
         <p className="text-lg md:text-xl text-ink/80 mb-8" data-anim>{L.heroSub}</p>
         <div className="flex gap-3" data-anim>
           <a href="https://cal.com/david-10but/15min" target="_blank" className="btn-cta">{L.cta}</a>
-          <button id="open-demo" className="rounded-md border border-ink/10 px-4 py-3">Voir la démo (3 min)</button>
+          <button id="open-demo" className="rounded-md border border-ink/10 px-4 py-3">Watch the demo (3 min)</button>
         </div>
         <div className="mt-10 trust" data-anim>
           <div className="trust-title">{L.trusted}</div>
           <div className="trust-logos">
-            <img src="/images/sciencespo.png" alt="Logo Sciences Po" />
+            <img src="/images/sciencespo.png" alt="Sciences Po logo" />
             <span className="divider" />
-            <img src="/images/wacano.jpg" alt="Logo Wacano" />
+            <img src="/images/wacano.jpg" alt="Wacano logo" />
           </div>
           <div className="chips">
             <span className="chip">Adoption 100% (en 3 mois)</span>
@@ -164,8 +166,8 @@ export default function Page() {
           <div className="flex items-center gap-10">
             <a href="https://cal.com/david-10but/15min" target="_blank" className="btn-cta">{L.cta}</a>
             <div className="text-sm">
-              <div className="font-poppins">Places restantes : <span className="text-accent font-semibold">2/5</span></div>
-              <div className="text-ink/60">Sans engagement</div>
+              <div className="font-poppins">Remaining slots: <span className="text-accent font-semibold">2/5</span></div>
+              <div className="text-ink/60">No commitment</div>
             </div>
           </div>
         </div>
@@ -205,7 +207,7 @@ export default function Page() {
           <p>© {new Date().getFullYear()} 10but</p>
           <div className="flex gap-3">
             <a href="https://cal.com/david-10but/15min" target="_blank" className="btn-cta">{L.cta}</a>
-            <a href="https://www.loom.com/" target="_blank" className="rounded-md border border-ink/10 px-4 py-2">Voir la démo</a>
+            <a href="https://www.loom.com/" target="_blank" className="rounded-md border border-ink/10 px-4 py-2">Watch demo</a>
           </div>
         </div>
       </footer>
