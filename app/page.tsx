@@ -57,6 +57,7 @@ const t = {
 
 
 
+
 function NetworkCVAnim() {
   const points = [
     [120,60],[80,160],[160,240],[280,80],[260,180],[340,260],[460,60],[520,140],[480,220]
@@ -76,7 +77,7 @@ function NetworkCVAnim() {
         <defs>
           <clipPath id="hub"><rect x={420} y={40} width={140} height={80} rx={10} /></clipPath>
         </defs>
-        <g id="layer">
+        <g>
           <g className="links">{linkEls}</g>
           <g className="nodes">{nodeEls}</g>
           <g className="cv">
@@ -90,6 +91,7 @@ function NetworkCVAnim() {
     </div>
   );
 }
+
 
 
         <g className="links">
