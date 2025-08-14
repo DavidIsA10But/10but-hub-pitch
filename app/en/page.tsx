@@ -46,8 +46,6 @@ const L = EN_L = {
   ]
 };
 
-const L = EN_L;
-
 export default function Page() {
 
   useEffect(() => {
