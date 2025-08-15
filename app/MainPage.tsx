@@ -1,11 +1,11 @@
 "use client";
 import { useEffect } from "react";
-import NavBar from "@/components/NavBar";
-import PixelRain from "@/components/PixelRain";
-import Slide from "@/components/Slide";
-import PriceWheel from "@/components/PriceWheel";
-import LeaderDuo from "@/components/LeaderDuo";
-import { getMessages, type LocaleKey } from "@/lib/i18n";
+import NavBar from "../components/NavBar";
+import PixelRain from "../components/PixelRain";
+import Slide from "../components/Slide";
+import PriceWheel from "../components/PriceWheel";
+import LeaderDuo from "../components/LeaderDuo";
+import { getMessages, type LocaleKey } from "../lib/i18n";
 
 export default function MainPage({ lang }:{lang:LocaleKey}){
   const L = getMessages(lang);
