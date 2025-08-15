@@ -1,0 +1,51 @@
+export default {
+  heroTitle: "Turn your Hub into an exclusive talent pool",
+  heroSub: "Strengthen your network around a critical topic for your entrepreneurs – recruitment — already adopted by Sciences Po and Wacano.",
+  cta: "Book a 15-min call",
+  trusted: "Trusted by",
+  probTitle: "Is your hub truly capturing all the value of its community?",
+  probText: "When each startup hires alone, qualified profiles are lost and ecosystem value drops. Result: 40 hours and several thousand euros wasted per hire, plus missed opportunities.",
+  pillarsTitle: "Boost your hub by enabling your startups to share their best candidates",
+  pillar1Title: "Activate the ecosystem",
+  pillar1Text: "A talent network that flows between your startups.",
+  pillar2Title: "Accelerate growth",
+  pillar2Text: "75% reduction in time-to-hire, saving €5,000 on average.",
+  pillar3Title: "Create a defensive asset",
+  pillar3Text: "Each profile added to the platform earns credits.",
+  howTitle: "How it works",
+  how1: "Add your hub and startups to the network.",
+  how2: "Not-selected candidates automatically join your pool.",
+  how3: "Each startup accesses peer pre-qualified talent.",
+  strip: "Every ‘no’ to a good candidate is an asset that evaporates. We turn it into a hub-wide advantage.",
+  offerTitle: "Free until January 2026 — limited to the next 5 partner hubs",
+  offerSub: "Afterwards: €10/month per startup (paid by the hub or the startups).",
+  slotsCount: "3/5",
+  chips: {
+    slotsLabel: "Remaining slots:",
+    noCommit: "No commitment",
+    adoption: "100% adoption (in 3 months)",
+    tth: "–75% time-to-hire",
+    saving: "€5,000 saved / hire",
+    kpi1: "+ circulating profiles",
+    kpi2: "–75% TTH",
+    kpi3: "€10–100 per ‘silver’"
+  },
+  usecases: "Customer use cases",
+  scpoTitle: "Sciences Po — Alumni & startups community",
+  scpoText: "Sciences Po enables its startups and alumni community to create a network of candidates sharing their values and needs — a pre-qualified pool exclusive to their ecosystem.",
+  wacanoTitle: "Wacano — startups that collaborate",
+  wacanoText: "Wacano shares the ‘silver medalists’ across its 56 startups to cut time-to-hire, prevent talent loss, and improve mobility inside its network.",
+  leaders: {
+    ceoTitle: "CEO’s note",
+    ceoName: "David Elbez — CEO",
+    ceoQuote: "At every hiring round, I saw strong not-selected candidates vanish. Today we turn each ‘no’ into a hub-wide advantage.",
+    ctoTitle: "CTO’s note",
+    ctoName: "Pierre Mouchan — CTO",
+    ctoQuote: "In the AI era, sticking to the traditional hiring model is at best suboptimal, at worst self-sabotage."
+  },
+  faq: [
+    { q: "Who owns the pool data?", a: "The hub maintains governance. If it accesses profiles from other hubs, it’s within a participative credit system: add a candidate, get a credit; view a candidate, spend a credit." },
+    { q: "Integrations?", a: "We handle everything: CSV export and ATS connections (Workable, Lever)." },
+    { q: "Commitment?", a: "Free until January 1, 2026, cancel anytime." }
+  ]
+} as const;
