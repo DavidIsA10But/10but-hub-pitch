@@ -1,160 +1,153 @@
 "use client";
-import { useEffect } from "react";
-import NavBar from "../components/NavBar";
-import PixelRain from "../components/PixelRain";
-import Slide from "../components/Slide";
-import PriceWheel from "../components/PriceWheel";
-import LeaderDuo from "../components/LeaderDuo";
-import { getMessages, LocaleKey } from "../lib/i18n";
+import { useEffect, useState } from "react";
+import { getMessages, type LocaleKey } from "@/lib/i18n";
+import { motion } from "framer-motion";
 
 export default function MainPage({ lang }: { lang: LocaleKey }) {
   const L = getMessages(lang);
 
-  useEffect(() => {
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) if (e.isIntersecting) e.target.classList.add("animate-in");
-    }, { rootMargin: "0px 0px -10% 0px" });
-    document.querySelectorAll("[data-anim]").forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
+  const Section: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => (
+    <motion.section
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={className}
+    >
+      {children}
+    </motion.section>
+  );
 
   return (
-    <main className="snap-y snap-mandatory">
-      <PixelRain />
-      <NavBar />
-
+    <main className="min-h-screen w-full overflow-x-hidden">
       {/* HERO */}
-      <Slide>
-        <h1 className="text-3xl md:text-5xl font-poppins font-semibold mb-5">{L.heroTitle}</h1>
-        <p className="text-lg md:text-xl text-ink/80 mb-8">{L.heroSub}</p>
-        <div className="flex gap-3">
-          <a href="https://cal.com/david-10but/15min" target="_blank" className="btn-cta">{L.cta}</a>
+      <Section className="px-6 py-16 md:py-24 max-w-5xl mx-auto text-center">
+        <h1 className="text-3xl md:text-5xl font-bold">{L.heroTitle}</h1>
+        <p className="mt-4 text-base md:text-lg opacity-80">{L.heroSub}</p>
+        <div className="mt-6">
+          <a
+            href="https://cal.com/david-10but/15min"
+            target="_blank"
+            className="inline-block rounded-2xl px-5 py-3 border"
+            rel="noreferrer"
+          >
+            {L.cta}
+          </a>
         </div>
-        <div className="mt-10 trust">
-          <div className="trust-title">{L.trusted}</div>
-          <div className="trust-logos">
-            <img src="/images/sciencespo.png" alt="Sciences Po" />
-            <span className="divider" />
-            <img src="/images/wacano.jpg" alt="Wacano" />
-          </div>
-          <div className="chips">
-            <span className="chip">{L.chips.adoption}</span>
-            <span className="chip">{L.chips.tth}</span>
-            <span className="chip">{L.chips.saving}</span>
-          </div>
-        </div>
-      </Slide>
+      </Section>
 
-      {/* PROBLEM with PriceWheel */}
-      <Slide>
-        <h2 className="text-2xl md:text-4xl font-poppins font-semibold mb-6">{L.probTitle}</h2>
-        <p className="text-ink/80 mb-10">{L.probText}</p>
-        <PriceWheel />
-      </Slide>
+      {/* PROBLEME + WHEEL ANIMATION (embedded) */}
+      <Section className="px-6 py-16 max-w-5xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-semibold">{L.probTitle}</h2>
+        <p className="mt-3 opacity-80">{L.probText}</p>
+
+        <div className="mt-8 rounded-2xl overflow-hidden aspect-video w-full">
+          {/* Simple, robust embed of the cost/time wheel from the sell deck */}
+          <iframe
+            src="https://10but-sell-deck.vercel.app/"
+            className="w-full h-full border-0"
+            title="10but Sell Deck – Cost/Time Wheel"
+          />
+        </div>
+      </Section>
 
       {/* 3 PILLARS */}
-      <Slide>
-        <h2 className="text-2xl md:text-4xl font-poppins font-semibold mb-6">{L.pillarsTitle}</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl border bg-white/70" data-anim>
-            <div className="bars mb-3"><span/><span/><span/></div>
-            <h3 className="font-poppins text-xl mb-2">{L.pillar1Title}</h3>
-            <p className="text-ink/80 mb-2">{L.pillar1Text}</p>
-            <span className="kpibadge">{L.chips.kpi1}</span>
+      <Section className="px-6 py-16 max-w-5xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-semibold">{L.pillarsTitle}</h2>
+        <div className="grid md:grid-cols-3 gap-6 mt-6">
+          <div className="rounded-2xl p-6 border">
+            <h3 className="font-semibold">{L.pillar1Title}</h3>
+            <p className="opacity-80 mt-2">{L.pillar1Text}</p>
           </div>
-          <div className="p-6 rounded-2xl border bg-white/70" data-anim>
-            <div className="bars mb-3"><span/><span/><span/></div>
-            <h3 className="font-poppins text-xl mb-2">{L.pillar2Title}</h3>
-            <p className="text-ink/80 mb-2">{L.pillar2Text}</p>
-            <span className="kpibadge">{L.chips.kpi2}</span>
+          <div className="rounded-2xl p-6 border">
+            <h3 className="font-semibold">{L.pillar2Title}</h3>
+            <p className="opacity-80 mt-2">{L.pillar2Text}</p>
           </div>
-          <div className="p-6 rounded-2xl border bg-white/70" data-anim>
-            <div className="bars mb-3"><span/><span/><span/></div>
-            <h3 className="font-poppins text-xl mb-2">{L.pillar3Title}</h3>
-            <p className="text-ink/80 mb-2">{L.pillar3Text}</p>
-            <span className="kpibadge">{L.chips.kpi3}</span>
+          <div className="rounded-2xl p-6 border">
+            <h3 className="font-semibold">{L.pillar3Title}</h3>
+            <p className="opacity-80 mt-2">{L.pillar3Text}</p>
           </div>
         </div>
-      </Slide>
+      </Section>
 
       {/* HOW IT WORKS */}
-      <Slide>
-        <h2 className="text-2xl md:text-4xl font-poppins font-semibold mb-6">{L.howTitle}</h2>
-        <ol className="steps">
-          <li className="step"><span className="badge">1</span>{L.how1}</li>
-          <li className="step"><span className="badge">2</span>{L.how2}</li>
-          <li className="step"><span className="badge">3</span>{L.how3}</li>
+      <Section className="px-6 py-16 max-w-5xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-semibold">{L.howTitle}</h2>
+        <ol className="mt-4 space-y-2 list-decimal list-inside">
+          <li>{L.how1}</li>
+          <li>{L.how2}</li>
+          <li>{L.how3}</li>
         </ol>
-        <a href="https://cal.com/david-10but/15min" target="_blank" className="btn-cta mt-6">{L.cta}</a>
-      </Slide>
+      </Section>
 
       {/* STRIP */}
-      <section className="w-full bg-accent/10 border-y" data-anim>
-        <div className="container py-10 text-center font-poppins">{L.strip}</div>
-      </section>
-
-      {/* OFFER */}
-      <Slide>
-        <h2 className="text-2xl md:text-4xl font-poppins font-semibold mb-6">{L.offerTitle}</h2>
-        <div className="offer">
-          <p className="text-ink/80 mb-6">{L.offerSub}</p>
-          <div className="flex items-center gap-10">
-            <a href="https://cal.com/david-10but/15min" target="_blank" className="btn-cta">{L.cta}</a>
-            <div className="text-sm">
-              <div className="font-poppins">{L.chips.slotsLabel} <span className="text-accent font-semibold">{L.slotsCount}</span></div>
-              <div className="text-ink/60">{L.chips.noCommit}</div>
-            </div>
-          </div>
+      <Section className="px-0">
+        <div className="w-full py-6 md:py-8 text-center text-sm md:text-base">
+          {L.strip}
         </div>
-      </Slide>
+      </Section>
+
+      {/* OFFER / SCARCITY */}
+      <Section className="px-6 py-16 max-w-5xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-semibold">{L.offerTitle}</h2>
+        <p className="opacity-80 mt-2">{L.offerSub}</p>
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          <span className="text-sm opacity-80">{L.chips.slotsLabel}</span>
+          <strong className="text-lg">{L.slotsCount}</strong>
+          <span className="text-xs px-2 py-1 rounded-full border">{L.chips.noCommit}</span>
+          <span className="text-xs px-2 py-1 rounded-full border">{L.chips.adoption}</span>
+          <span className="text-xs px-2 py-1 rounded-full border">{L.chips.tth}</span>
+          <span className="text-xs px-2 py-1 rounded-full border">{L.chips.saving}</span>
+        </div>
+      </Section>
 
       {/* USE CASES */}
-      <Slide>
-        <h2 className="text-2xl md:text-4xl font-poppins font-semibold mb-10">{L.usecases}</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="p-6 rounded-2xl border bg-white/70" data-anim>
-            <img src="/images/sciencespo.png" alt="Sciences Po" className="h-10 mb-3" />
-            <h3 className="font-poppins font-semibold mb-2">{L.scpoTitle}</h3>
-            <p className="text-ink/80">{L.scpoText}</p>
+      <Section className="px-6 py-16 max-w-5xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-semibold">{L.usecases}</h2>
+        <div className="mt-6 grid md:grid-cols-2 gap-6">
+          <div className="p-6 border rounded-2xl">
+            <h3 className="font-semibold">{L.scpoTitle}</h3>
+            <p className="opacity-80 mt-2">{L.scpoText}</p>
           </div>
-          <div className="p-6 rounded-2xl border bg-white/70" data-anim>
-            <img src="/images/wacano.jpg" alt="Wacano" className="h-10 mb-3" />
-            <h3 className="font-poppins font-semibold mb-2">{L.wacanoTitle}</h3>
-            <p className="text-ink/80">{L.wacanoText}</p>
+          <div className="p-6 border rounded-2xl">
+            <h3 className="font-semibold">{L.wacanoTitle}</h3>
+            <p className="opacity-80 mt-2">{L.wacanoText}</p>
           </div>
         </div>
-      </Slide>
+      </Section>
 
-      {/* LEADERSHIP (CEO + CTO) */}
-      <Slide>
-        <h2 className="text-2xl md:text-4xl font-poppins font-semibold mb-6">{L.leaders.ceoTitle}</h2>
-        <LeaderDuo
-          ceo={{ photo: "/images/ceo-david.jpg", name: L.leaders.ceoName, quote: L.leaders.ceoQuote }}
-          cto={{ photo: "/images/cto-pierre.jpg", name: L.leaders.ctoName, quote: L.leaders.ctoQuote }}
-        />
-      </Slide>
+      {/* LEADERS combined slide */}
+      <Section className="px-6 py-16 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="p-6 border rounded-2xl">
+            <div className="text-sm opacity-70">{L.leaders.ceoTitle}</div>
+            <div className="font-semibold mt-1">{L.leaders.ceoName}</div>
+            <p className="mt-3 italic">“{L.leaders.ceoQuote}”</p>
+          </div>
+          <div className="p-6 border rounded-2xl">
+            <div className="text-sm opacity-70">{L.leaders.ctoTitle}</div>
+            <div className="font-semibold mt-1">{L.leaders.ctoName}</div>
+            <p className="mt-3 italic">“{L.leaders.ctoQuote}”</p>
+          </div>
+        </div>
+      </Section>
 
       {/* FAQ */}
-      <Slide>
-        <h2 className="text-2xl md:text-4xl font-poppins font-semibold mb-6">FAQ</h2>
-        <div className="faq">
-          {L.faq.map((it: any, idx: number) => (
-            <div key={idx} className="mb-4">
-              <div className="q">{it.q}</div>
-              <div className="a">{it.a}</div>
-            </div>
+      <Section className="px-6 py-16 max-w-5xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-semibold">FAQ</h2>
+        <div className="mt-6 space-y-4">
+          {L.faq.map((item, idx) => (
+            <details key={idx} className="rounded-2xl border p-4">
+              <summary className="font-medium cursor-pointer">{item.q}</summary>
+              <p className="mt-2 opacity-80">{item.a}</p>
+            </details>
           ))}
         </div>
-      </Slide>
+      </Section>
 
-      {/* FOOTER reachable */}
-      <footer className="border-t">
-        <div className="container py-14 text-sm text-ink/70 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} 10but</p>
-          <div className="flex gap-3">
-            <a href="https://cal.com/david-10but/15min" target="_blank" className="btn-cta">{L.cta}</a>
-          </div>
-        </div>
+      {/* FOOTER placeholder with high z-index to ensure accessibility */}
+      <footer className="relative z-50 px-6 py-10 text-center text-sm opacity-70">
+        © {new Date().getFullYear()} 10but
       </footer>
     </main>
   );
