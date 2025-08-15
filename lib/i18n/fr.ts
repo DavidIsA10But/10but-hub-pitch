@@ -20,13 +20,29 @@ const FR = {
   offerTitle: "Gratuit jusqu’en janvier 2026 — réservé aux 5 prochains hubs partenaires",
   offerSub: "Ensuite : 10 €/mois par startup (payé par le hub ou par les startups).",
   slotsCount: "3/5",
-  chips: { slotsLabel: "Places restantes :", noCommit: "Sans engagement", adoption: "Adoption 100% (en 3 mois)", tth: "–75% time-to-hire", saving: "5 000 € économisés / recrutement", kpi1: "+ circulation de profils", kpi2: "–75% TTH", kpi3: "10–100 € par “silver”" },
+  chips: {
+    slotsLabel: "Places restantes :",
+    noCommit: "Sans engagement",
+    adoption: "Adoption 100% (en 3 mois)",
+    tth: "–75% time-to-hire",
+    saving: "5 000 € économisés / recrutement",
+    kpi1: "+ circulation de profils",
+    kpi2: "–75% TTH",
+    kpi3: "10–100 € par “silver”"
+  },
   usecases: "Use cases clients",
   scpoTitle: "Sciences Po — Communauté alumni & startups",
   scpoText: "Sciences Po permet à ses startups et à sa communauté alumni de créer un réseau de candidats partageant leurs valeurs et leurs besoins — un vivier préqualifié, exclusif à leur écosystème.",
   wacanoTitle: "Wacano — des startups qui collaborent",
   wacanoText: "Wacano met en commun les “médaillés d’argent” de ses 56 startups pour réduire le time-to-hire, éviter la perte de profils qualifiés, et fluidifier la mobilité des talents au sein de son réseau.",
-  leaders: { ceoTitle: "Mot du CEO", ceoName: "David Elbez — CEO", ceoQuote: "À chaque recrutement, j’ai vu trop de candidats solides non recrutés jetés aux oubliettes. Aujourd’hui, on transforme chaque ‘non’ en un atout pour tout l’écosystème.", ctoTitle: "Mot du CTO", ctoName: "Pierre Mouchan — CTO", ctoQuote: "À l’ère de l’IA, rester sur le modèle traditionnel de recrutement est au mieux un manque d’optimisation, au pire du sabotage." },
+  leaders: {
+    ceoTitle: "Mot du CEO",
+    ceoName: "David Elbez — CEO",
+    ceoQuote: "À chaque recrutement, j’ai vu trop de candidats solides non recrutés jetés aux oubliettes. Aujourd’hui, on transforme chaque ‘non’ en un atout pour tout l’écosystème.",
+    ctoTitle: "Mot du CTO",
+    ctoName: "Pierre Mouchan — CTO",
+    ctoQuote: "À l’ère de l’IA, rester sur le modèle traditionnel de recrutement est au mieux un manque d’optimisation, au pire du sabotage."
+  },
   faq: [
     { q: "Qui possède les données du vivier ?", a: "Le hub conserve la gouvernance. Si le hub accède aux profils d’autres hubs, c’est dans le cadre d’un système participatif avec crédits : ajoutez un candidat, vous recevez un crédit ; découvrez un candidat, vous payez un crédit." },
     { q: "Quelles intégrations ?", a: "Nous nous occupons de tout : export CSV et connexions ATS (Workable, Lever)." },

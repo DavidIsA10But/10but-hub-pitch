@@ -16,7 +16,7 @@ export default function PixelRain(){
       const scroll = scrollY||0, docH=Math.max(1,document.body.scrollHeight-innerHeight), f=Math.min(1,scroll/docH);
       g.clearRect(0,0,W,H);
       for(const p of pts){
-        const vy=p.s + f*0.8;
+        const vy=p.s + f*0.8; // slower, increases with scroll
         p.y+=vy; p.x+=p.vx;
         const dx=p.x-mx, dy=p.y-my, d=Math.hypot(dx,dy);
         if(d<160){ const F=(160-d)/160; p.x += (dx/(d||1))*-0.25*F; p.y += (dy/(d||1))*-0.05*F; }
