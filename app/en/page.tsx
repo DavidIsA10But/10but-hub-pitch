@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import NavBar from "../../components/NavBar";
 import PixelRain from "../../components/PixelRain";
 import LeaderQuote from "../../components/LeaderQuote";
-import { getMessages } from ""../../lib/i18n";
+import { getMessages } from "../../lib/i18n";
 
 const L = getMessages("en");
 
@@ -55,10 +55,10 @@ export default function Page() {
       {/* PROBLEM */}
       <Section title={L.probTitle}>
         <p className="text-ink/80 mb-8">{L.probText}</p>
-        {/* TODO: insérer ici l’animation du sell deck */}
+        {/* TODO: insert the sell deck animation here */}
       </Section>
 
-      {/* 3 PILIERS */}
+      {/* 3 PILLARS */}
       <Section title={L.pillarsTitle}>
         <div className="pillars">
           <div className="pillar" data-anim>
@@ -95,7 +95,7 @@ export default function Page() {
       {/* STRIP */}
       <div className="strip">{L.strip}</div>
 
-      {/* OFFRE */}
+      {/* OFFER */}
       <Section title={L.offerTitle}>
         <div className="offer">
           <p className="text-ink/80">{L.offerSub}</p>
