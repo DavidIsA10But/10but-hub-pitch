@@ -1,10 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
-import { getMessages, type LocaleKey } from "@/lib/i18n";
+import { getMessages, type LocaleKey } from "../lib/i18n";
 import { motion } from "framer-motion";
 
 export default function MainPage({ lang }: { lang: LocaleKey }) {
   const L = getMessages(lang);
+  const slotsCount: string | undefined = (L as any).slotsCount;
 
   const Section: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => (
     <motion.section
@@ -93,7 +94,7 @@ export default function MainPage({ lang }: { lang: LocaleKey }) {
         <p className="opacity-80 mt-2">{L.offerSub}</p>
         <div className="mt-4 flex flex-wrap items-center gap-3">
           <span className="text-sm opacity-80">{L.chips.slotsLabel}</span>
-          <strong className="text-lg">{L.slotsCount}</strong>
+          <strong className="text-lg">{slotsCount ?? '3/5'}</strong>
           <span className="text-xs px-2 py-1 rounded-full border">{L.chips.noCommit}</span>
           <span className="text-xs px-2 py-1 rounded-full border">{L.chips.adoption}</span>
           <span className="text-xs px-2 py-1 rounded-full border">{L.chips.tth}</span>
