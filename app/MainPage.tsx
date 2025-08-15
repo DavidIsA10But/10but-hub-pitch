@@ -6,6 +6,10 @@ import { motion } from "framer-motion";
 export default function MainPage({ lang }: { lang: LocaleKey }) {
   const L = getMessages(lang);
   const slotsCount: string | undefined = (L as any).slotsCount;
+  const leaders = (L as any).leaders as
+    | { ceoTitle: string; ceoName: string; ceoQuote: string; ctoTitle: string; ctoName: string; ctoQuote: string }
+    | undefined;
+
 
   const Section: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className }) => (
     <motion.section
@@ -121,14 +125,14 @@ export default function MainPage({ lang }: { lang: LocaleKey }) {
       <Section className="px-6 py-16 max-w-5xl mx-auto">
         <div className="grid md:grid-cols-2 gap-6">
           <div className="p-6 border rounded-2xl">
-            <div className="text-sm opacity-70">{L.leaders.ceoTitle}</div>
-            <div className="font-semibold mt-1">{L.leaders.ceoName}</div>
-            <p className="mt-3 italic">“{L.leaders.ceoQuote}”</p>
+            <div className="text-sm opacity-70">{leaders?.ceoTitle ?? ''}</div>
+            <div className="font-semibold mt-1">{leaders?.ceoName ?? ''}</div>
+            <p className="mt-3 italic">“{leaders?.ceoQuote ?? ''}”</p>
           </div>
           <div className="p-6 border rounded-2xl">
-            <div className="text-sm opacity-70">{L.leaders.ctoTitle}</div>
-            <div className="font-semibold mt-1">{L.leaders.ctoName}</div>
-            <p className="mt-3 italic">“{L.leaders.ctoQuote}”</p>
+            <div className="text-sm opacity-70">{leaders?.ctoTitle ?? ''}</div>
+            <div className="font-semibold mt-1">{leaders?.ctoName ?? ''}</div>
+            <p className="mt-3 italic">“{leaders?.ctoQuote ?? ''}”</p>
           </div>
         </div>
       </Section>
