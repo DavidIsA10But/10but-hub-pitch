@@ -1,4 +1,4 @@
-const EN = {
+export default {
   heroTitle: "Turn your Hub into an exclusive talent pool",
   heroSub: "Strengthen your network around a critical topic for your entrepreneurs – recruitment — already adopted by Sciences Po and Wacano.",
   cta: "Book a 15-min call",
@@ -49,4 +49,3 @@ const EN = {
     { q: "Commitment?", a: "Free until January 1, 2026, cancel anytime." }
   ]
 } as const;
-export default EN;

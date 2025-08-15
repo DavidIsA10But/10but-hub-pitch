@@ -1,1 +1,2 @@
-import MainPage from "../MainPage"; export default function Page(){ return <MainPage lang="en" /> }
+import MainPage from "../MainPage";
+export default function Page(){ return <MainPage lang="en" />; }

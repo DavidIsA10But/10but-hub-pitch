@@ -1,1 +1,9 @@
-export default function Slide({children}:{children:React.ReactNode}){return(<section className='min-h-[88svh] md:min-h-[90vh] snap-start flex items-center'><div className='container py-28 md:py-32' data-anim>{children}</div></section>)}
+export default function Slide({ children }: { children: React.ReactNode }) {
+  return (
+    <section className="min-h-[88svh] md:min-h-[90vh] snap-start flex items-center">
+      <div className="container py-28 md:py-32" data-anim>
+        {children}
+      </div>
+    </section>
+  );
+}

@@ -1,1 +1,5 @@
-import FR from './fr'; import EN from './en'; export type LocaleKey='fr'|'en'; export type Messages=typeof FR; export const getMessages=(l:LocaleKey):Messages=>l==='en'?EN:FR;
+import FR from "./fr";
+import EN from "./en";
+
+export type LocaleKey = "fr" | "en";
+export const getMessages = (locale: LocaleKey) => (locale === "en" ? EN : FR);

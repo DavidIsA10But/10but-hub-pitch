@@ -1,4 +1,4 @@
-const FR = {
+export default {
   heroTitle: "Transformez votre Hub en un vivier de talents exclusif",
   heroSub: "Vous renforcez votre réseau autour d’un sujet critique pour vos entrepreneurs – le recrutement — déjà adopté par Sciences Po et Wacano.",
   cta: "Réserver un appel de 15 min",
@@ -49,4 +49,3 @@ const FR = {
     { q: "Quel engagement ?", a: "Offre gratuite jusqu’au 1er janvier 2026, résiliable à tout moment." }
   ]
 } as const;
-export default FR;
