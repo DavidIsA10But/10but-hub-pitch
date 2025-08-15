@@ -1,39 +1,62 @@
-
 "use client";
 import { useEffect, useRef } from "react";
-type Dot = { x:number; y:number; s:number; v:number; a:number };
+
 export default function PixelRain() {
-  const ref = useRef<HTMLCanvasElement>(null);
+  const ref = useRef<HTMLCanvasElement | null>(null);
+
   useEffect(() => {
-    const c = ref.current!;
-    const ctx = c.getContext("2d")!;
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const DPR = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
-    function resize(){ c.width = window.innerWidth*DPR; c.height = window.innerHeight*DPR; }
-    resize(); window.addEventListener("resize", resize);
-    const MAX = 320;
-    const dots: Dot[] = Array.from({length: MAX}).map(() => ({ x: Math.random()*c.width, y: Math.random()*c.height, s:(Math.random()*2+1)*DPR, v:(Math.random()*0.6+0.4)*DPR, a:Math.random()*0.6+0.2 }));
-    let raf=0, visible=90, sizeBoost=1;
-    const onScroll = () => {
-      const docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-      const progress = Math.min(1, Math.max(0, window.scrollY / (docH - window.innerHeight + 1)));
-      visible = Math.floor(90 + progress * (MAX - 90));
-      sizeBoost = 1 + progress * 0.6;
+    const canvas = ref.current!;
+    const ctx = canvas.getContext("2d")!;
+    let w = (canvas.width = window.innerWidth);
+    let h = (canvas.height = window.innerHeight);
+
+    const N = 160;
+    const P = Array.from({ length: N }).map(() => ({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      s: Math.random() * 1.5 + 0.5,
+      r: Math.random() * 1.2 + 0.6,
+    }));
+
+    const onResize = () => {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
     };
-    window.addEventListener("scroll", onScroll, { passive:true });
-    if (mq.matches) return () => { window.removeEventListener("resize", resize); window.removeEventListener("scroll", onScroll); };
-    const render = () => {
-      ctx.clearRect(0,0,c.width,c.height);
-      for (let i=0; i<visible; i++) {
-        const d = dots[i];
-        ctx.fillStyle = `rgba(230,57,70,${d.a})`;
-        ctx.fillRect(d.x, d.y, d.s*sizeBoost, d.s*sizeBoost);
-        d.y += d.v; if (d.y > c.height) { d.y = -d.s; d.x = Math.random()*c.width; }
+    window.addEventListener("resize", onResize);
+
+    let raf = 0;
+    const draw = () => {
+      const scroll = window.scrollY || 0;
+      const docH = Math.max(1, document.body.scrollHeight - window.innerHeight);
+      const f = Math.min(1, scroll / docH);
+
+      ctx.clearRect(0, 0, w, h);
+
+      for (let i = 0; i < P.length; i++) {
+        const p = P[i];
+        const vy = p.s + f * 2.2;
+        p.y += vy;
+        if (p.y - 4 > h) {
+          p.y = -4;
+          p.x = Math.random() * w;
+        }
+        const radius = p.r + f * 1.6;
+        const alpha = 0.18 + f * 0.45;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(230,57,70,${alpha.toFixed(3)})`;
+        ctx.fill();
       }
-      raf = requestAnimationFrame(render);
+      raf = requestAnimationFrame(draw);
     };
-    raf = requestAnimationFrame(render);
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); window.removeEventListener("scroll", onScroll); };
+
+    draw();
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", onResize);
+    };
   }, []);
-  return <canvas className="pixel-canvas" ref={ref} aria-hidden="true" />;
+
+  return <canvas ref={ref} className="fixed inset-0 -z-10 pointer-events-none" />;
 }
