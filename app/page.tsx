@@ -31,7 +31,7 @@ export default function Page() {
       <NavBar />
 
       {/* HERO */}
-      <section className="container pt-52 pb-28">
+      <section className="container pt-52 pb-28 min-h-[80vh] flex flex-col justify-center">
         <h1 className="text-3xl md:text-5xl font-poppins font-semibold mb-5" data-anim>{L.heroTitle}</h1>
         <p className="text-lg md:text-xl text-ink/80 mb-8" data-anim>{L.heroSub}</p>
         <div className="flex gap-3" data-anim>
@@ -126,11 +126,17 @@ export default function Page() {
       </Section>
 
       {/* LEADERSHIP */}
-      <Section title={L.leaders.ceoTitle}>
-        <LeaderQuote photo="/images/ceo-david.jpg" name={L.leaders.ceoName} quote={L.leaders.ceoQuote} />
-      </Section>
-      <Section title={L.leaders.ctoTitle}>
-        <LeaderQuote photo="/images/cto-pierre.jpg" name={L.leaders.ctoName} quote={L.leaders.ctoQuote} />
+      <Section title="Leadership">
+        <div className="space-y-8">
+          <div>
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold mb-4">{L.leaders.ceoTitle}</h3>
+            <LeaderQuote photo="/images/ceo-david.jpg" name={L.leaders.ceoName} quote={L.leaders.ceoQuote} />
+          </div>
+          <div>
+            <h3 className="text-xl md:text-2xl font-poppins font-semibold mb-4">{L.leaders.ctoTitle}</h3>
+            <LeaderQuote photo="/images/cto-pierre.jpg" name={L.leaders.ctoName} quote={L.leaders.ctoQuote} />
+          </div>
+        </div>
       </Section>
 
       {/* FAQ */}
@@ -147,7 +153,7 @@ export default function Page() {
 
       {/* FOOTER */}
       <footer className="border-t">
-        <div className="container py-10 text-sm text-ink/70 flex items-center justify-between">
+        <div className="py-12 px-5 text-sm text-ink/70 flex items-center justify-between max-w-6xl mx-auto">
           <p>© {new Date().getFullYear()} 10but</p>
           <div className="flex gap-3">
             <a href="https://cal.com/david-10but/15min" target="_blank" className="btn-cta">{L.cta}</a>
