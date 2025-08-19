@@ -9,8 +9,8 @@ const L = getMessages("fr");
 
 function Section({ title, children }: { title?: string; children: React.ReactNode }) {
   return (
-    <section className="container py-28 md:py-32">
-      {title ? <h2 className="text-2xl md:text-4xl font-poppins font-semibold mb-6" data-anim>{title}</h2> : null}
+    <section className="container py-20 md:py-24">
+      {title ? <h2 className="text-2xl md:text-4xl font-poppins font-semibold mb-4" data-anim>{title}</h2> : null}
       <div data-anim>{children}</div>
     </section>
   );
